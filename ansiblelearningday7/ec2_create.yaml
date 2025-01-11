@@ -1,0 +1,23 @@
+---
+- name: Launch ec2 instance
+  hosts: localhost
+  connection: local
+  tasks:
+   - name: start an instance with a public IP address
+     amazon.aws.ec2_instance:
+      name: "{{item.name}}"
+      state: present
+      key_name: nirmalsona1234
+      region: ap-south-1
+      aws_access_key: "{{ec2_access_key_id}}" # From vault as defined
+      aws_secret_key: "{{ec2_secret_key}}" # From vault as defined  
+      # vpc_subnet_id: subnet-5ca1ab1e
+      instance_type: t2.micro
+      security_group: default
+      network_interfaces:
+        - assign_public_ip: true
+      image_id: "{{item.image}}"
+     loop:
+      - {image: "ami-07b69f62c1d38b012", name: "host1" }
+      - {image: "ami-053b12d3152c0cc71", name: "host2" }  
+

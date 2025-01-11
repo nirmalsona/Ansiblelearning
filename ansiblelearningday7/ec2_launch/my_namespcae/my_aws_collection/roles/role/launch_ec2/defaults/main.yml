@@ -1,0 +1,8 @@
+---
+# defaults file for role/launch_ec2
+ec2_instance_type: t2.micro
+ec2_image_id: ami-07b69f62c1d38b012
+ec2_region: ap-south-1
+
+
+

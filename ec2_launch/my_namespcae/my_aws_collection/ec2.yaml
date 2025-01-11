@@ -1,0 +1,8 @@
+---
+- name: launch ec2 instances
+  hosts: localhost
+  become: yes
+  roles:
+    - /home/n/ec2_launch/my_namespcae/my_aws_collection/roles/role/launch_ec2 
+
+
